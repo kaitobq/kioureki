@@ -1,5 +1,5 @@
 import { FirebaseApp } from "@/firebase/FirebaseConfig";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const UserInfo = () => {
@@ -9,10 +9,16 @@ const UserInfo = () => {
     <Box
       height="100vh"
       display="flex"
+      flexDirection="column"
       alignItems="center"
       justifyContent="center"
     >
-      <Typography component="h5">{user?.email}さんようこそ</Typography>
+      <Typography component="h5" my={1}>
+        ようこそ {user?.email}さん
+      </Typography>
+      <Button href="/home" variant="contained" fullWidth>
+        始める
+      </Button>
     </Box>
   );
 };
