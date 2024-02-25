@@ -11,7 +11,6 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.log(email, password);
     signUp(email, password);
   };
 

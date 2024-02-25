@@ -14,7 +14,6 @@ const SignIn = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.log(email, password);
     signIn(email, password);
   };
 
