@@ -2,13 +2,17 @@
 
 import Injuries from "@/components/data/Injuries";
 import { FirebaseApp } from "@/firebase/FirebaseConfig";
-import { useFirestore } from "@/firebase/hooks/useFirestore";
 import { Box, Button, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "../loading";
 
 export default function Home() {
-  const [user] = useAuthState(FirebaseApp.auth);
+  const [user, load] = useAuthState(FirebaseApp.auth);
+
+  if (load) {
+    return <Loading />;
+  }
 
   return (
     <Box
