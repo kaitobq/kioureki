@@ -3,7 +3,7 @@
 import { useFirestore } from "@/firebase/hooks/useFirestore";
 import {
   Box,
-  Input,
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -11,7 +11,9 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import React, { useEffect, useRef, useState } from "react";
+import InputDialog from "./InputDialog";
 
 type injury = {
   name: string;
@@ -36,9 +38,24 @@ const Injuries = () => {
     }
   };
 
+  const [digOpen, setDigOpen] = useState(false);
+
   return (
     <Box width="80%">
       <input type="text" ref={ref} onChange={handleSearch}></input>
+      <InputDialog
+        open={digOpen}
+        onClose={() => {
+          setDigOpen(false);
+        }}
+      />
+      <Button
+        onClick={() => {
+          setDigOpen(true);
+        }}
+      >
+        <AddIcon />
+      </Button>
       <TableContainer>
         <Table>
           <TableHead>
