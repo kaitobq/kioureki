@@ -1,7 +1,8 @@
 "use client";
 
+import Injuries from "@/components/data/Injuries";
 import { FirebaseApp } from "@/firebase/FirebaseConfig";
-import SignIn from "@/firebase/auth/SignIn";
+import { useFirestore } from "@/firebase/hooks/useFirestore";
 import { Box, Button, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -19,7 +20,8 @@ export default function Home() {
     >
       <Toolbar />
       {user ? (
-        <></>
+        // 既往歴一覧、編集ページへのリンクもあり
+        <Injuries />
       ) : (
         <>
           <Typography component="h3" my={1}>

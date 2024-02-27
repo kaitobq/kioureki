@@ -1,6 +1,7 @@
 "use client";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 export const FirebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_APIKEY,
@@ -13,8 +14,10 @@ export const FirebaseConfig = {
 
 export const firebase = initializeApp(FirebaseConfig);
 
+const firestore = getFirestore(firebase);
 const auth = getAuth(firebase);
 
 export const FirebaseApp = {
+  firestore,
   auth,
 };
