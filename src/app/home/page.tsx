@@ -20,7 +20,6 @@ export default function Home() {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      justifyContent="center"
     >
       <Toolbar />
       {user ? (
