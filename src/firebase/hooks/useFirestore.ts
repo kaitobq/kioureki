@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { FirebaseApp } from "../FirebaseConfig";
-
-type injury = {
-  name: string;
-  part: string;
-  diagnosis: string;
-};
+import { injury } from "@/components/types/injury";
 
 export const useFirestore = (data: string) => {
   const [documents, setDocuments] = useState<injury[]>([]);
@@ -17,7 +12,8 @@ export const useFirestore = (data: string) => {
     const unsub = onSnapshot(docRef, (snapshot) => {
       let results: any = [];
       snapshot.docs.forEach((doc) => {
-        results.push({ ...doc.data() });
+        console.log(doc.id);
+        results.push({ id: doc.id, ...doc.data() });
       });
 
       setDocuments(results);
