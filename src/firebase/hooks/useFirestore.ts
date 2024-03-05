@@ -12,7 +12,6 @@ export const useFirestore = (data: string) => {
     const unsub = onSnapshot(docRef, (snapshot) => {
       let results: any = [];
       snapshot.docs.forEach((doc) => {
-        console.log(doc.id);
         results.push({ id: doc.id, ...doc.data() });
       });
 
