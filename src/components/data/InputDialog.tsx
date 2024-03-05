@@ -32,7 +32,13 @@ const InputDialog = (props: any) => {
     onClose();
   };
 
-  const handleSubmit = async () => {
+  //preventdefault追加した方がいい？
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    if (name === "" || part === "" || diagnosis === "" || category === "") {
+      return;
+    }
+
+    e.preventDefault();
     const firestore = FirebaseApp.firestore;
 
     try {
@@ -55,6 +61,7 @@ const InputDialog = (props: any) => {
     } catch (e) {
       console.log(e);
     }
+    handleClose();
   };
 
   return (
