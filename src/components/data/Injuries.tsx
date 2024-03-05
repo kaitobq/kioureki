@@ -6,11 +6,13 @@ import AddIcon from "@mui/icons-material/Add";
 import React, { useEffect, useRef, useState } from "react";
 import InputDialog from "./InputDialog";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import EditDialog from "./EditDialog";
 import { injury } from "../types/injury";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useFirestore } from "@/firebase/hooks/useFirestore";
-import { Timestamp } from "firebase/firestore";
+import { Timestamp, collection, deleteDoc, doc } from "firebase/firestore";
+import { FirebaseApp } from "@/firebase/FirebaseConfig";
 
 const Injuries = () => {
   const { documents: data } = useFirestore("Injuries");
@@ -38,6 +40,16 @@ const Injuries = () => {
     console.log(row);
   };
 
+  const handleDelete = async (row: injury) => {
+    const firestore = FirebaseApp.firestore;
+    const docRef = doc(firestore, "Injuries", row.id);
+    try {
+      await deleteDoc(docRef);
+    } catch (e) {
+      console.error("Error deleting document: ", e);
+    }
+  };
+
   const columns: GridColDef[] = [
     { field: "name", headerName: "name", width: 200 },
     { field: "part", headerName: "part", width: 200 },
@@ -49,7 +61,8 @@ const Injuries = () => {
       headerName: "injuryDate",
       width: 200,
       renderCell: (params) =>
-        params.value ? new Date(params.value).toDateString() : "-",
+        params.value ? params.value.toDateString() : "-",
+      // params.value ? new Date(params.value).toDateString() : "-",
     },
     {
       field: "edit",
@@ -58,6 +71,16 @@ const Injuries = () => {
       renderCell: (params) => (
         <Button onClick={() => handleEditClick(params.row as injury)}>
           <EditIcon />
+        </Button>
+      ),
+    },
+    {
+      field: "delete",
+      headerName: "Delete",
+      width: 100,
+      renderCell: (params) => (
+        <Button onClick={() => handleDelete(params.row as injury)}>
+          <DeleteIcon />
         </Button>
       ),
     },
