@@ -32,7 +32,6 @@ const InputDialog = (props: any) => {
     onClose();
   };
 
-  //preventdefault追加した方がいい？
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     if (name === "" || part === "" || diagnosis === "" || category === "") {
       return;
