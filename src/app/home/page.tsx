@@ -23,11 +23,10 @@ export default function Home() {
     >
       <Toolbar />
       {user ? (
-        // 既往歴一覧、編集ページへのリンクもあり
         <Injuries />
       ) : (
         <>
-          <Typography component="h3" my={1}>
+          <Typography component="h3" mt={25}>
             ログアウトしました
           </Typography>
           <Button href="/" variant="contained">
