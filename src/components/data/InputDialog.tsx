@@ -24,7 +24,7 @@ const InputDialog = (props: any) => {
   const [diagnosis, setDiagnosis] = useState("");
   const [category, setCategory] = useState("");
   const [note, setNote] = useState("");
-  const [injuryDate, setInjuryDate] = React.useState<Dayjs | null>();
+  const [injuryDate, setInjuryDate] = useState<Dayjs | null>(dayjs());
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleClose = () => {
@@ -32,7 +32,13 @@ const InputDialog = (props: any) => {
     onClose();
   };
 
-  const handleSubmit = async () => {
+  //preventdefault追加した方がいい？
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    if (name === "" || part === "" || diagnosis === "" || category === "") {
+      return;
+    }
+
+    e.preventDefault();
     const firestore = FirebaseApp.firestore;
 
     try {
@@ -55,6 +61,7 @@ const InputDialog = (props: any) => {
     } catch (e) {
       console.log(e);
     }
+    handleClose();
   };
 
   return (
@@ -63,7 +70,6 @@ const InputDialog = (props: any) => {
         open={open}
         onClose={handleClose}
         PaperProps={{ component: "form" }}
-        onSubmit={handleSubmit}
       >
         <DialogTitle>既往歴登録</DialogTitle>
         <DialogContent>
@@ -121,7 +127,12 @@ const InputDialog = (props: any) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button type="submit" variant="contained" fullWidth>
+          <Button
+            onClick={handleSubmit}
+            type="submit"
+            variant="contained"
+            fullWidth
+          >
             Submit
           </Button>
         </DialogActions>

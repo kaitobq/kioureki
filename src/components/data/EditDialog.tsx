@@ -34,9 +34,7 @@ const EditDialog: React.FC<EditDialogProps> = ({
   const [category, setCategory] = useState(initialValues?.category || "");
   const [note, setNote] = useState(initialValues?.note || "");
   const [injuryDate, setInjuryDate] = useState<Dayjs | null>(
-    initialValues?.injuryDate
-      ? dayjs((initialValues.injuryDate as unknown as Timestamp).toDate())
-      : null
+    initialValues?.injuryDate ? dayjs(initialValues.injuryDate) : null
   );
 
   const handleSubmit = async () => {
