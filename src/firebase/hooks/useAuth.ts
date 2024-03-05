@@ -11,7 +11,7 @@ export const useSignUp = () => {
   const signUp = (email: string, password: string) => {
     createUserWithEmailAndPassword(fireauth, email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
       })
       .catch((e) => {
         console.log(e.message);
@@ -27,7 +27,7 @@ export const useSignIn = () => {
   const signIn = (email: string, password: string) => {
     signInWithEmailAndPassword(fireauth, email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
       })
       .catch((e) => {
         console.log(e.message);
