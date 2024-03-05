@@ -62,7 +62,6 @@ const Injuries = () => {
       width: 200,
       renderCell: (params) =>
         params.value ? params.value.toDateString() : "-",
-      // params.value ? new Date(params.value).toDateString() : "-",
     },
     {
       field: "edit",
