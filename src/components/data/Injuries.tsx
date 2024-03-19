@@ -51,14 +51,14 @@ const Injuries = () => {
   };
 
   const columns: GridColDef[] = [
-    { field: "名前", headerName: "name", width: 200 },
-    { field: "部位", headerName: "part", width: 100 },
-    { field: "診断", headerName: "diagnosis", width: 200 },
-    { field: "カテゴリ", headerName: "category", width: 100 },
-    { field: "備考", headerName: "note", width: 200 },
+    { field: "name", headerName: "名前", width: 200 },
+    { field: "part", headerName: "部位", width: 100 },
+    { field: "diagnosis", headerName: "診断", width: 200 },
+    { field: "category", headerName: "カテゴリ", width: 100 },
+    { field: "note", headerName: "備考", width: 300 },
     {
-      field: "受傷日",
-      headerName: "injuryDate",
+      field: "injuryDate",
+      headerName: "受傷日",
       width: 130,
       renderCell: (params) =>
         params.value ? params.value.toDateString() : "-",
