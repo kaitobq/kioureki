@@ -52,21 +52,21 @@ const Injuries = () => {
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "name", width: 200 },
-    { field: "part", headerName: "part", width: 200 },
+    { field: "part", headerName: "part", width: 100 },
     { field: "diagnosis", headerName: "diagnosis", width: 200 },
-    { field: "category", headerName: "category", width: 200 },
+    { field: "category", headerName: "category", width: 100 },
     { field: "note", headerName: "note", width: 200 },
     {
       field: "injuryDate",
       headerName: "injuryDate",
-      width: 200,
+      width: 130,
       renderCell: (params) =>
         params.value ? params.value.toDateString() : "-",
     },
     {
       field: "edit",
       headerName: "Edit",
-      width: 100,
+      width: 70,
       renderCell: (params) => (
         <Button onClick={() => handleEditClick(params.row as injury)}>
           <EditIcon />
@@ -76,7 +76,7 @@ const Injuries = () => {
     {
       field: "delete",
       headerName: "Delete",
-      width: 100,
+      width: 70,
       renderCell: (params) => (
         <Button onClick={() => handleDelete(params.row as injury)}>
           <DeleteIcon />
