@@ -1,10 +1,8 @@
 "use client";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography, styled } from "@mui/material";
-import { FirebaseApp } from "../FirebaseConfig";
-import { useSignIn, useUser } from "../hooks/useAuth";
+import { useSignIn } from "../hooks/useAuth";
 import Link from "next/link";
 
 const SignIn = () => {
@@ -46,7 +44,9 @@ const SignIn = () => {
       <Button type="submit" variant="contained" fullWidth>
         Submit
       </Button>
-      <Link href="/signup">初めてご利用の方はこちら</Link>
+      <Link href="/signup" style={{ marginTop: 15 }}>
+        初めてご利用の方はこちら
+      </Link>
     </Container>
   );
 };
