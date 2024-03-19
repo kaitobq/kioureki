@@ -70,7 +70,7 @@ const InputDialog = (props: any) => {
         onClose={handleClose}
         PaperProps={{ component: "form" }}
       >
-        <DialogTitle>既往歴登録</DialogTitle>
+        <DialogTitle sx={{ marginBottom: 1 }}>既往歴登録</DialogTitle>
         <DialogContent>
           <TextField
             required
