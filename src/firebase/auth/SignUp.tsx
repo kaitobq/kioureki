@@ -4,14 +4,15 @@ import { Box, Button, TextField, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useSignUp } from "../hooks/useAuth";
 
-const SignUp = () => {
+const SignUp = ({ router }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signUp } = useSignUp();
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    signUp(email, password);
+    await signUp(email, password);
+    router.push("/home");
   };
 
   return (
